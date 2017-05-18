@@ -12,7 +12,9 @@ import java.io.*;
  * @author HorseBOYYYY
  */
 public class Stable {
-
+/*
+HihihHOHOH
+ */
 
     
 
