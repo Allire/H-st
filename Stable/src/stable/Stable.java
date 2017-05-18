@@ -12,9 +12,7 @@ import java.io.*;
  * @author HorseBOYYYY
  */
 public class Stable {
-/*
-HihihHOHOH
- */
+
 
     
 
@@ -37,7 +35,6 @@ HihihHOHOH
     public static void main(String[] args) {
         Database DB = new Database();
         // TODO code application logic here
-        int a = 12;
         new GUI(DB);
     }
     
