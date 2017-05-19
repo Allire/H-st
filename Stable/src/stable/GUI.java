@@ -15,9 +15,9 @@ public class GUI {
     private JPanel background;
     private JTextField tf_horsename, tf_stallnumber, tf_points ,tf_weight, tf_height, tf_rank;
     private JLabel l_horsename, l_stallnumber, l_points , l_rank, l_weight, l_height;
-    private JButton b_create, b_remove, b_addweight, b_addheight, b_search, b_clear, b_rank, b_points;
+    private JButton b_create, b_remove, b_addweight, b_addheight, b_search, b_clear, b_rank, b_points, b_save;
     private Database database;
-    private Horse findHorse;
+    private Horse horse;
 
     public GUI(Database databasen){
         database = databasen;
@@ -40,19 +40,24 @@ public class GUI {
         b_create = new JButton("Create Horse");
         b_create.addActionListener(new CreateHandler());
         b_remove = new JButton("Remove Horse");
+        b_remove.addActionListener(new RemoveHandler());
         b_points = new JButton("Add Points");
         b_points.addActionListener(new PointHandler());
         b_rank = new JButton("View rank");
         b_rank.addActionListener(new RankHandler());
         b_addweight = new JButton("New weight");
+        b_addweight.addActionListener(new WeightHandler());
         b_addheight = new JButton("New height");
+        b_addheight.addActionListener(new HeightHandler());
         b_search = new JButton("Search");
         b_search.addActionListener(new SearchHandler());
-        b_clear = new JButton("clear");
+        b_clear = new JButton("Clear");
         b_clear.addActionListener(new ClearHandler());
+        b_save = new JButton("Save");
+        b_save.addActionListener(new SaveHandler());
 
         frame.add(background);
-        background.setLayout(new GridLayout(10,2));
+        background.setLayout(new GridLayout(11,2));
         background.add(l_horsename);
         background.add(tf_horsename);
         background.add(l_stallnumber);
@@ -73,6 +78,7 @@ public class GUI {
         background.add(b_search);
         background.add(b_clear);
         background.add(b_rank);
+        background.add(b_save);
         frame.pack();
         frame.setVisible(true);
     }
@@ -82,6 +88,22 @@ public class GUI {
         return new JTextField(12);
     }
 
+    
+    
+    private class SaveHandler implements ActionListener{
+        public void actionPerformed(ActionEvent ae){
+            try{
+            FileOutputStream fos = new FileOutputStream("database.srz");
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            ObjectOutputStream out = new ObjectOutputStream(bos);
+            out.writeObject(database);
+            out.close();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 
     private class ClearHandler implements ActionListener{
         public void actionPerformed(ActionEvent ae){
@@ -99,18 +121,21 @@ public class GUI {
                 tf_horsename.setText("PLEASE ENTER A NAME");
             }
             else{
-                Horse h = new Horse(tf_horsename.getText());
-                tf_stallnumber.setText("" + h.getNumber());
-                database.addHorse(h);
-                //System.out.println(database.findHorse(h.getNumber()));
+                horse = new Horse(tf_horsename.getText());
+                tf_stallnumber.setText("" + horse.getNumber());
+                database.addHorse(horse);
+                //System.out.println(database.horse(h.getNumber()));
             }
         }
     }
 
     private class PointHandler implements ActionListener{
         public void actionPerformed(ActionEvent ae){
+            String value = tf_points.getText();
+            System.out.println(value);
             int points = Integer.parseInt(tf_points.getText());
-            findHorse.setPoints(points);
+            horse.setPoints(points);
+            tf_points.setText(""+ horse.getPoints());
 
 
         }
@@ -118,12 +143,24 @@ public class GUI {
 
     private class WeightHandler implements ActionListener{
         public void actionPerformed(ActionEvent ae){
-
+            
+            String value = tf_weight.getText();
+            System.out.println(value);
+            double weight = Double.parseDouble(tf_weight.getText());
+            horse.setWeight(weight);
+            tf_weight.setText(""+ horse.getWeight());
         }
     }
 
     private class HeightHandler implements ActionListener{
         public void actionPerformed(ActionEvent ae){
+                 
+            String value = tf_height.getText();
+            System.out.println(value);
+            double height = Double.parseDouble(tf_height.getText());
+            horse.setHeight(height);
+            tf_height.setText(""+ horse.getHeight());
+
 
         }
     }
@@ -171,9 +208,14 @@ public class GUI {
                 else{
                     String value = tf_stallnumber.getText();
                     int stallnumber = Integer.parseInt(value);
-                     findHorse = database.findHorse(stallnumber);
-                    tf_horsename.setText(findHorse.getHorseName());
-                    l_rank.setText("" + findHorse.getRank());
+                     horse = database.findHorse(stallnumber);
+                    tf_horsename.setText(horse.getHorseName());
+                    //l_rank.setText("" + horse.getRank());
+                    tf_points.setText("" + horse.getPoints());
+                    tf_weight.setText("" + horse.getWeight());
+                    tf_height.setText("" + horse.getHeight());
+                           
+                    
                     
                 }
             }

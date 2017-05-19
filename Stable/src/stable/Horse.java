@@ -33,18 +33,18 @@ public class Horse{
       
   }
   
-  public void setHorseweight(double mass){
-      weight = mass;
+  public void setWeight(double weight){
+      this.weight = weight;
   }
   
-  public void setHorsesize(double size){
-      height = size;
+  public void setHeight(double height){
+      this.height = height;
   }
   public void setHorsenumber(int stallnumber){
     this.stallnumber = stallnumber;
   }
   public void setPoints(int points){
-      this.points = this.points + points;
+      this.points +=points;
   }
 
 
