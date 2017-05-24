@@ -136,8 +136,6 @@ public class GUI {
             int points = Integer.parseInt(tf_points.getText());
             horse.setPoints(points);
             tf_points.setText(""+ horse.getPoints());
-
-
         }
     }
 

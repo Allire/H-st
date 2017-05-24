@@ -12,10 +12,6 @@ import java.io.*;
  * @author HorseBOYYYY
  */
 public class Stable {
-
-
-    
-
       /* public static void main(String[] args) {
         Database databasen = null;
         try{
@@ -34,9 +30,6 @@ public class Stable {
        } */
     public static void main(String[] args) {
         Database DB = new Database();
-        // TODO code application logic here
         new GUI(DB);
     }
-    
-       
-       }
+}
