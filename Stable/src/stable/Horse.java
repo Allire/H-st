@@ -43,7 +43,6 @@ public class Horse{
      * that draw the image will incrementally paint on the screen.
      *
      * @param  weight  an absolute URL giving the base location of the image
-     * @return      the image at the specified URL
      */
   public void setWeight(double weight){
       this.weight = weight;

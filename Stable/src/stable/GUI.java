@@ -19,6 +19,10 @@ public class GUI {
     private Database database;
     private Horse horse;
 
+    
+    
+    
+    /** metod för att skapa GUI lägger till listners på knappar */
     public GUI(Database databasen){
         database = databasen;
         frame = new JFrame("HorseHouse");
@@ -89,10 +93,10 @@ public class GUI {
     }
 
     
-    
-    private class SaveHandler implements ActionListener{
-        public void actionPerformed(ActionEvent ae){
-            try{
+
+     private class SaveHandler implements ActionListener{
+public void actionPerformed(ActionEvent ae){
+                /** funkar inte    try{
             FileOutputStream fos = new FileOutputStream("database.srz");
             BufferedOutputStream bos = new BufferedOutputStream(fos);
             ObjectOutputStream out = new ObjectOutputStream(bos);
@@ -102,7 +106,7 @@ public class GUI {
             catch(Exception e){
                 e.printStackTrace();
             }
-        }
+        } */
     }
 
     private class ClearHandler implements ActionListener{

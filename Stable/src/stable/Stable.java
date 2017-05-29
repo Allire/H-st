@@ -15,7 +15,7 @@ public class Stable {
       /* public static void main(String[] args) {
         Database databasen = null;
         try{
-            ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("horse.srz")));
+            ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("datebase.srz")));
             databasen = (Database)in.readObject();
             
         }catch(Exception e){

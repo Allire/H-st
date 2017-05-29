@@ -14,10 +14,17 @@ public class Database {
     public HashMap horses = new HashMap();
     public HashMap points = new HashMap();
 
+    
+    
+    
+    /** Metod för att lägga till hästar, inom paranteserna ligger hästen som ska läggas till */
     public void addHorse(Horse hrs){
         horses.put(hrs.getNumber(), hrs);
         //System.out.println(horses.get(hrs.getNumber()));
     }
+    
+    
+    /** Metod som ska hitta en häst och retunerar den funna hästens nummer */
     public Horse findHorse(int findNo){
         return (Horse)horses.get(findNo);
     }
